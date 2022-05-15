@@ -4,6 +4,7 @@ import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;
 import com.facebook.react.ReactRootView;
 import com.zoontek.rnbootsplash.RNBootSplash;
+import android.os.Bundle;
 
 public class MainActivity extends ReactActivity {
 
@@ -43,5 +44,10 @@ public class MainActivity extends ReactActivity {
       RNBootSplash.init(getPlainActivity()); // <- initialize the splash screen
       super.loadApp(appKey);
     }
+  }
+
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(null);
   }
 }
