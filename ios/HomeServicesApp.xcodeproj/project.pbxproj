@@ -13,6 +13,11 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		3433D7C6282FC57800BE60CA /* BootSplash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3433D7C5282FC57800BE60CA /* BootSplash.storyboard */; };
+		345219532836A4A200A42913 /* Inter-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3452194E2836A4A200A42913 /* Inter-Regular.ttf */; };
+		345219542836A4A200A42913 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3452194F2836A4A200A42913 /* Montserrat-Bold.ttf */; };
+		345219552836A4A200A42913 /* Inter-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 345219502836A4A200A42913 /* Inter-SemiBold.ttf */; };
+		345219562836A4A200A42913 /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 345219512836A4A200A42913 /* Montserrat-SemiBold.ttf */; };
+		345219572836A4A200A42913 /* Inter-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 345219522836A4A200A42913 /* Inter-Medium.ttf */; };
 		7699B88040F8A987B510C191 /* libPods-HomeServicesApp-HomeServicesAppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-HomeServicesApp-HomeServicesAppTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -52,6 +57,11 @@
 		344F6A1628315050009E448A /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = MaterialCommunityIcons.ttf; path = "../../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
 		344F6A1828315050009E448A /* Feather.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Feather.ttf; path = "../../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; };
 		344F6A1A28315051009E448A /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = SimpleLineIcons.ttf; path = "../../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
+		3452194E2836A4A200A42913 /* Inter-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Regular.ttf"; sourceTree = "<group>"; };
+		3452194F2836A4A200A42913 /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.ttf"; sourceTree = "<group>"; };
+		345219502836A4A200A42913 /* Inter-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-SemiBold.ttf"; sourceTree = "<group>"; };
+		345219512836A4A200A42913 /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBold.ttf"; sourceTree = "<group>"; };
+		345219522836A4A200A42913 /* Inter-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Medium.ttf"; sourceTree = "<group>"; };
 		3B4392A12AC88292D35C810B /* Pods-HomeServicesApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HomeServicesApp.debug.xcconfig"; path = "Target Support Files/Pods-HomeServicesApp/Pods-HomeServicesApp.debug.xcconfig"; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-HomeServicesApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HomeServicesApp.release.xcconfig"; path = "Target Support Files/Pods-HomeServicesApp/Pods-HomeServicesApp.release.xcconfig"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-HomeServicesApp-HomeServicesAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HomeServicesApp-HomeServicesAppTests.debug.xcconfig"; path = "Target Support Files/Pods-HomeServicesApp-HomeServicesAppTests/Pods-HomeServicesApp-HomeServicesAppTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -125,6 +135,11 @@
 		344F6A0A28314EDE009E448A /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				345219522836A4A200A42913 /* Inter-Medium.ttf */,
+				3452194E2836A4A200A42913 /* Inter-Regular.ttf */,
+				345219502836A4A200A42913 /* Inter-SemiBold.ttf */,
+				3452194F2836A4A200A42913 /* Montserrat-Bold.ttf */,
+				345219512836A4A200A42913 /* Montserrat-SemiBold.ttf */,
 				344F6A0B28315050009E448A /* AntDesign.ttf */,
 				344F6A1128315050009E448A /* Entypo.ttf */,
 				344F6A0D28315050009E448A /* EvilIcons.ttf */,
@@ -279,8 +294,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				345219552836A4A200A42913 /* Inter-SemiBold.ttf in Resources */,
+				345219542836A4A200A42913 /* Montserrat-Bold.ttf in Resources */,
 				3433D7C6282FC57800BE60CA /* BootSplash.storyboard in Resources */,
+				345219562836A4A200A42913 /* Montserrat-SemiBold.ttf in Resources */,
+				345219572836A4A200A42913 /* Inter-Medium.ttf in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
+				345219532836A4A200A42913 /* Inter-Regular.ttf in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
