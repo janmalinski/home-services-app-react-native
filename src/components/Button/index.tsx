@@ -14,7 +14,7 @@ export interface ButtonProps extends ElementsButtonProps {
 export const smallHeight = 48;
 export const mediumHeight = 60;
 
-const index = ({
+export const Button = ({
     color = 'primary',
     size = 'small',
     type = 'solid',
@@ -122,4 +122,3 @@ const styles = StyleSheet.create({
       },
     });
 
-export default index;

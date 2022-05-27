@@ -5,9 +5,9 @@ import { palette } from 'app/config/styles';
 
 export type IconProps = ElementsIconProps;
 
-const Icon = ({ color = palette.primaryDefault, ...props }: IconProps) => (
+export const Icon = ({ color = palette.primaryDefault, ...props }: IconProps) => (
     //@ts-ignore
   <ElementsIcon type="material-community" color={color} {...props} />
 );
 
-export default Icon
+
