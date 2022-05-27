@@ -17,6 +17,7 @@ const languageDetector = {
 i18n.use(languageDetector as I18nFormatModule)
 .use(initReactI18next)
 .init({
+    compatibilityJSON: 'v3', 
     fallbackLng: 'en',
     resources: {
         en, 
