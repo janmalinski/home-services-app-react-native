@@ -1,8 +1,8 @@
 import React from 'react';
-import { Platform, StyleSheet, View, ViewStyle, ImageBackground } from 'react-native';
+import { Platform, StyleSheet, View, ViewStyle } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { palette } from 'app/config/styles';
+import { palette, spacing } from 'app/config/styles';
 
 import { KeyboardAvoidingComponent } from '../KeyboardAvoidingComponent';
 import { LoadingIndicator } from '../LoadingIndicator';
@@ -80,8 +80,7 @@ const styles = StyleSheet.create({
     flexGrow: 1,
   },
   padded: {
-    paddingHorizontal: 16,
-    paddingVertical: 30,
+    padding: spacing.large
   },
   bottomNavigationPad: {
     paddingBottom: 0,
