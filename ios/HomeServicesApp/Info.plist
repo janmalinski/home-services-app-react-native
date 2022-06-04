@@ -39,6 +39,8 @@
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>The App would like to have access to your location, when app is in use.It is required to post ads.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>The App would like to have access to the Photo Library to change profile picture.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Inter-Medium.ttf</string>
