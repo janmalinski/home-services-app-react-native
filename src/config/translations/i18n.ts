@@ -32,4 +32,6 @@ i18n.use(languageDetector as I18nFormatModule)
     }
 });
 
+export const language =  i18n.language
+
 export default i18n;
