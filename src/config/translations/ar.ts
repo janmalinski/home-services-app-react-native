@@ -5,7 +5,7 @@ const translations = {
     signIn: {
       signIn: 'تسجيل الدخول',
     },
-    content: {
+    adList: {
       contentList: 'قائمة المحتويات',
     },
     settings: {

@@ -16,7 +16,8 @@ const translations = {
     no: 'No',
     save: 'Save',
   },
-  ad: {
+  adCreate: {
+    createAd: "Create Ad",
     unableOpenSettings: 'Unable to open settings',
     locationDisabled: `Turn on Location Services to allow "${appConfig.displayName}" to determine your location. This is required to add your ad to listing`,
     locationPermissionDenied: 'Location permission denied',
@@ -58,6 +59,7 @@ const translations = {
     acceptRequired: 'You need to accept our Terms of Use',
   },
   location:{
+    howCanWeHelpYou: "How can we help you?",
     location: "Location",
     clientOrWorker: "Are you looking for Home Help, or you are Home Help?",
     client: 'I am looking for Home Help',
@@ -69,7 +71,9 @@ const translations = {
 
   },
   map: {
-    searchOrMoveTheMap:'Search or move the map'
+    searchOrMoveTheMap:'Search or move the map',
+    whereAreYouLookingForHelp: 'Where are you looking for home help?',
+    whichAreYouWantToWork: 'Which area you want to work?'
   },
   signIn: {
     signIn: 'Log In',
@@ -84,7 +88,7 @@ const translations = {
     termsOfUse: 'Terms of Use',
   },
   registrationCodeSignUp: {
-    registrationCodeVeryfication: "Registration code veryfication",
+    registrationCodeVerification: "Registration code verification",
     registrationCode: "Registration code",
     registrationCodeButton: "Submit registration code"
   },
@@ -97,8 +101,8 @@ const translations = {
     resetPasswordSuccess:
       'Email with password reset link has been sent. After setting up new password, sign in with newly set password at the login screen.',
   },
-  content: {
-    list: 'List',
+  adList: {
+    list: 'Ads',
     image: 'Image',
     addAd: 'Add Ad',
     contentList: 'Content List',
