@@ -23,14 +23,15 @@ type signInParams = {payload: Types.SignInPayload; type: string };
 function* signUp({ payload }: signUpParams) {
   try {
     yield put(Actions.setLoadingSignUp());
-    const { email, password, termsAccepted, latitude, longitude, userType} = payload;
+    const { email, password, termsAccepted, latitude, longitude, userType, language} = payload;
     const result: ResponseGenerator = yield call(Api.signUp, {
       email,
       password,
       termsAccepted,
       latitude,
       longitude,
-      userType
+      userType,
+      language
     });
     yield put(Actions.setSignUpSuccess());
     navigationService.navigate(Types.Route.RegistrationCodeSignUp)
