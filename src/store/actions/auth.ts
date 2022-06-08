@@ -1,6 +1,6 @@
 import * as Types from 'app/types';
 
-export const signUpRequest = ({ email, password, termsAccepted, latitude, longitude, userType }: Types.SignUpPayload) => {
+export const signUpRequest = ({ email, password, termsAccepted, latitude, longitude, userType, language }: Types.SignUpPayload) => {
   return {
     type: Types.AUTH.SIGN_UP_REQUEST,
     payload: {
@@ -9,7 +9,8 @@ export const signUpRequest = ({ email, password, termsAccepted, latitude, longit
       termsAccepted,
       latitude,
       longitude,
-      userType
+      userType,
+      language
     },
   };
 };
