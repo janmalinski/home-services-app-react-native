@@ -1,4 +1,5 @@
 import * as Types from 'app/types';
+import { string } from 'yup';
 
 export const createAdRequest = (
   token: string,
@@ -10,6 +11,9 @@ export const createAdRequest = (
   dateAvailableTo: Date,
   workingTimeNegotiable: boolean,
   workingTime: Types.WorkingTime[],
+  address: number,
+  latitude: number,
+  longitude: number,
 ) => ({
   type: Types.AD.CREATE_AD_REQUEST,
   token,
@@ -20,7 +24,10 @@ export const createAdRequest = (
   fixedTerm,
   dateAvailableTo,
   workingTimeNegotiable,
-  workingTime
+  workingTime,
+  address,
+  latitude,
+  longitude
 });
 
 export const setLoadingCreateAd = () => ({

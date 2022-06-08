@@ -10,7 +10,10 @@ export const createAd = (
   fixedTerm: boolean,
   dateAvailableTo: Date,
   workingTimeNegotiable: boolean,
-  workingTime: Types.WorkingTime[]
+  workingTime: Types.WorkingTime[],
+  address: string,
+  latitude: number,
+  longitude: number
 ) => {
   const body = {
     description,
@@ -20,7 +23,10 @@ export const createAd = (
     fixedTerm,
     dateAvailableTo,
     workingTimeNegotiable,
-    workingTime
+    workingTime,
+    address,
+    latitude,
+    longitude
   };
 
   return API.post('/ad/create', body, {

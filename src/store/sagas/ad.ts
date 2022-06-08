@@ -2,7 +2,6 @@ import { takeEvery, call, put, fork } from 'redux-saga/effects';
 
 import * as Api from 'app/api';
 import { ToastControl } from 'app/components/ToastControl';
-import { navigationService } from 'app/lib/services';
 import * as Actions from 'app/store/actions';
 import * as Types from 'app/types';
 
@@ -24,9 +23,12 @@ function* createAd(payload: {
   fixedTerm: boolean;
   dateAvailableTo: Date;
   workingTimeNegotiable: boolean;
-  workingTime: Types.WorkingTime[]
+  workingTime: Types.WorkingTime[],
+  address: string,
+  latitude: number,
+  longitude: number,
 }) {
-  const { token, description, serviceIds, employmentTypeIds, dateAvailableFrom, fixedTerm, dateAvailableTo,  workingTimeNegotiable, workingTime } = payload;
+  const { token, description, serviceIds, employmentTypeIds, dateAvailableFrom, fixedTerm, dateAvailableTo,  workingTimeNegotiable, workingTime, address, latitude, longitude } = payload;
   try { 
     yield put(Actions.setLoadingCreateAd());
     const result: ResponseGenerator = yield call(
@@ -39,10 +41,13 @@ function* createAd(payload: {
       fixedTerm,
       dateAvailableTo,
       workingTimeNegotiable,
-      workingTime
+      workingTime,
+      address,
+      latitude,
+      longitude
     );
     yield put(Actions.createAdSuccess(result.data.message, result.data.add));
-    navigationService.navigate(Types.Route.Settings);
+    ToastControl.show(result.data.message, 'success');
   } catch (error: any) {
     if(error.response){
       ToastControl.show(error.response.data.message, 'error');

@@ -2,7 +2,8 @@ import * as Types from 'app/types';
 
 export interface AdState {
   data: Types.Ad;
-  isLoading: boolean;
+  isPending: boolean;
+  success: boolean;
   error: string;
   message: string;
 }
@@ -13,7 +14,8 @@ const INITIAL_STATE: AdState = {
     description: '',
     services: [],
   },
-  isLoading: false,
+  isPending: false,
+  success: false,
   error: '',
   message: '',
 };
@@ -23,7 +25,8 @@ export default function user(state = INITIAL_STATE, action: any) {
     case Types.AD.CREATE_AD_PENDING: {
       return {
         ...state,
-        isLoading: true,
+        isPending: true,
+        success: false,
         message: '',
         error: '',
       };
@@ -34,7 +37,8 @@ export default function user(state = INITIAL_STATE, action: any) {
         ...state,
         data: action.payload.ad,
         message: action.payload.message,
-        isLoading: false,
+        isPending: false,
+        success: true,
         error: '',
       };
     }
@@ -42,7 +46,8 @@ export default function user(state = INITIAL_STATE, action: any) {
     case Types.AD.CREATE_AD_FAILD: {
       return {
         ...state,
-        isLoading: false,
+        isPending: false,
+        success: false,
         message: '',
         error: action.payload.message,
       };
