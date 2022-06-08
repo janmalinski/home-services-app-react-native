@@ -4,7 +4,8 @@ export interface SignUpPayload {
   termsAccepted: boolean;
   latitude: number;
   longitude: number;
-  userType: string
+  userType: string;
+  language: string;
 }
 
 export interface SignInPayload {

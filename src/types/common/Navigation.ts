@@ -8,8 +8,8 @@ export enum Route {
   Location = 'Location',
   Map = 'Map',
   ContentCreate = 'ContentCreate',
-  ContentImage = 'ContentImage',
-  ContentList = 'ContentList',
+  AdCreate = 'AdCreate',
+  AdList = 'AdList',
   MainTab = 'MainTab',
   ResetPassword = 'ResetPassword',
   Settings = 'Settings',
@@ -24,18 +24,26 @@ export enum Route {
 
 type NoParams = undefined;
 
-/* Params of navigators */
+interface AdCreateParams {
+  latitude?: number;
+  longitude?: number;
+  address?: string;
+}
 
 export type MainTabParams = {
-  [Route.ContentList]: NoParams;
-  [Route.ContentImage]: NoParams;
+  [Route.AdList]: NoParams;
+  [Route.AdCreate]: AdCreateParams;
   [Route.Settings]: NoParams;
 };
 
-interface SignUpScreenParams extends MapScreenParams, Pick<Coordinates, 'latitude' | 'longitude'> {};
+interface SignUpScreenParams extends  Pick<MapScreenParams, 'userType'>, Pick<Coordinates, 'latitude' | 'longitude'> {};
 
 interface MapScreenParams {
-  userType: string;
+  redirectAfterSubmit: string;
+  userType: {
+    id: string;
+    name: string;
+  };
 }
 
 export type RootStackParams = {
@@ -44,6 +52,7 @@ export type RootStackParams = {
   [Route.ResetPassword]: NoParams;
   [Route.Location]: NoParams;
   [Route.Map]: MapScreenParams,
+  [Route.AdCreate]: AdCreateParams;
   [Route.SignIn]: NoParams;
   [Route.SignUp]: SignUpScreenParams;
   [Route.RegistrationCodeSignUp]: NoParams;
@@ -57,15 +66,15 @@ export interface NavParams extends MainTabParams, RootStackParams {}
 
 /* Utility types for screens */
 
-export type RootStackNavigationProp<R extends keyof RootStackParams> = StackNavigationProp<
+export type RootStackNavigationProps<R extends keyof RootStackParams> = StackNavigationProp<
   RootStackParams,
   R
 >;
 
 export type RootStackRouteProp<R extends keyof RootStackParams> = RouteProp<RootStackParams, R>;
 
-export interface RootStackNavigatorProps<R extends keyof RootStackParams> {
-  navigation: RootStackNavigationProp<R>;
+export interface RootStackScreenProps<R extends keyof RootStackParams> {
+  navigation: RootStackNavigationProps<R>;
   route: RootStackRouteProp<R>;
 }
 
