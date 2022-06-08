@@ -7,19 +7,19 @@ import * as Types from 'app/types';
 import { i18n } from 'app/config/translations';
 import { palette, spacing, typography } from 'app/config/styles';
 import { actions, selectors } from 'app/store';
-import { Route } from 'app/types';
-import Config from 'react-native-config';
 
-export type Props = Types.RootStackNavigatorProps<Types.Route.Location>;
+type Props = Types.RootStackScreenProps<Types.Route.Location>;
 
 export const LocationScreen: React.FC<Props> = ({ navigation }) => {
 
-  const [locationType, setLocationType] = useState('')
-  const [userType, setUserType] = useState('');
+  const [mapButtonPressed, setMapButtonPressed] = useState(false);
+  const [userType, setUserType] = useState({id: '', name: ''});
   const [employmentTypes, setEmploymentTypes] = useState<string[]>([]);
   const dispatch = useDispatch();
   const typeemployments: Types.Typeemployment[] = useSelector(selectors.getTypeemployments);
   const roles: Types.Role[] = useSelector(selectors.getRoles);
+  const isTypeemploymentsLoading = useSelector(selectors.isTypeemploymentsLoading);
+  const isRolesLoading = useSelector(selectors.isRolesLoading);
  
   useEffect(()=>{
     dispatch(actions.getTypeemploymentRequest());
@@ -35,14 +35,14 @@ export const LocationScreen: React.FC<Props> = ({ navigation }) => {
     }
   }
 
-  const navigateToMap = useCallback( (type: string) => {
-    setLocationType(type);
-    navigation.navigate(Route.Map, {userType});
-  },[setLocationType, navigation, userType])
+  const navigateToMap = useCallback( () => {
+    setMapButtonPressed(true);
+    navigation.navigate(Types.Route.Map, {redirectAfterSubmit: Types.Route.SignUp, userType});
+  },[setMapButtonPressed, navigation, userType])
   
   return (
-    <FullScreenTemplate padded> 
-      <StyledText style={styles.header}>{i18n.t('location:clientOrWorker')}</StyledText>
+    <FullScreenTemplate padded isLoading={isTypeemploymentsLoading && isRolesLoading }> 
+     {roles.length > 0 && <StyledText style={styles.firstHeaader}>{i18n.t('location:clientOrWorker')}</StyledText>} 
       <View style={[styles.rowTwoButtons]}>
           {roles?.map(item => 
             item.name !== 'Admin' &&
@@ -51,19 +51,19 @@ export const LocationScreen: React.FC<Props> = ({ navigation }) => {
                 buttonStyle={[
                 styles.button,
                 styles.buttonLeft,
-                userType === item.id
+                userType.id === item.id
                   ? { backgroundColor: '#def5f1' }
                   : { backgroundColor: '#F6F6F6' },
                 ]}
                 titleStyle={styles.buttonTitle}
                 title={i18n.t(item.name === 'Help' ? 'location:worker' : 'location:client')}
-                onPress={() => setUserType(item.id)}
+                onPress={() => setUserType({id: item.id, name: item.name})}
               />
             </View>))}
       </View>
-      {userType !== '' &&
+      {userType.id !== '' &&
         <View>
-            <StyledText style={styles.header}>{userType === 'client' ? i18n.t('location:clientEmploymentType') : i18n.t('location:workerEmploymentType')}</StyledText>
+            <StyledText style={styles.header}>{userType.name === 'Client' ? i18n.t('location:clientEmploymentType') : i18n.t('location:workerEmploymentType')}</StyledText>
           <View style={styles.userTypeChoiceContainer}>
            {typeemployments.map((typeemployment:{id: string, name: string}) => (
               <Button
@@ -88,13 +88,13 @@ export const LocationScreen: React.FC<Props> = ({ navigation }) => {
         <Button
           buttonStyle={[
             styles.button,
-            locationType === 'detect'
+            mapButtonPressed
               ? { backgroundColor: '#def5f1' }
               : { backgroundColor: '#F6F6F6' },
           ]}
           titleStyle={styles.buttonTitle}
           title={i18n.t('location:detectLocation')}
-          onPress={()=>navigateToMap('detect')}
+          onPress={navigateToMap}
         />
     </View>
     }
@@ -103,6 +103,10 @@ export const LocationScreen: React.FC<Props> = ({ navigation }) => {
 }
 
 const styles = StyleSheet.create({
+  firstHeaader: {
+    ...typography.subtitle1,
+    marginBottom: spacing.tiny,
+  },
   header: {
     ...typography.subtitle1,
   marginTop: spacing.xxxLarge, 

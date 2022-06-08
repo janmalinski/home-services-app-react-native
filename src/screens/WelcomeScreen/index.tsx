@@ -7,7 +7,7 @@ import * as Types from 'app/types';
 import { typography, palette } from 'app/config/styles';
 
 
-type Props = Types.RootStackNavigatorProps<Types.Route.Welcome>;
+type Props = Types.RootStackScreenProps<Types.Route.Welcome>;
 
 export const WelcomeScreen = ({ navigation }: Props) => {
     const navigateSignInScreen = useCallback(() => {
@@ -41,7 +41,6 @@ export const WelcomeScreen = ({ navigation }: Props) => {
         <StyledText style={styles.title}>Find home help in 10 minutes</StyledText>
         <View style={styles.subContainer}>
           <Button
-            testID="WelcomeScreen.SignUp"
             style={styles.button}
             title="Start"
             onPress={navigateToLocationScreen}
