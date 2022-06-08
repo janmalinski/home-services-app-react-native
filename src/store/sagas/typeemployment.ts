@@ -24,9 +24,7 @@ function* getTypeemploymnets() {
       }),
     );
   } catch (error: any) {
-    console.log('ERR', error)
     if(error.response){
-      console.log('RES', error.response)
       ToastControl.show(error.response.data.message, 'error');
       yield put(Actions.getTypeemploymentFailed({ message: error.response.data.message }));
     } else {

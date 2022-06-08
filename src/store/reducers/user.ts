@@ -7,6 +7,18 @@ interface User {
   phoneNumber: string;
   phoneNumberConsent: boolean;
   avatarURL: string;
+  ads: [
+    { 
+      id: string;
+      name: string;
+    }
+  ], 
+  roles: [
+    { 
+      id: string;
+      name: string;
+    }
+  ]
 }
 
 export interface UserState {
@@ -23,6 +35,18 @@ const INITIAL_STATE: UserState = {
     phoneNumber: '',
     phoneNumberConsent: false,
     avatarURL: '',
+    ads: [
+      { 
+        id: '',
+        name: ''
+      }
+    ], 
+    roles: [
+      { 
+        id: '',
+        name: ''
+      }
+    ]
   },
   isLoading: false,
   error: '',

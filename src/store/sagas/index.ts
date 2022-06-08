@@ -3,7 +3,7 @@ import { all } from 'redux-saga/effects';
 import adSagas from './ad';
 import authSagas from './auth';
 import serviceSagas from './service';
-import typeemploymentsSagas from './typemployment';
+import typeemploymentsSagas from './typeemployment';
 import rolesSagas from './role';
 import userSagas from './user';
 
