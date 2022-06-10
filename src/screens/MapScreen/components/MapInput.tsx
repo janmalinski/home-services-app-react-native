@@ -26,9 +26,6 @@ export const MapInput = ({onAddressChange}: Props) => {
       ref={ref}
       placeholder={i18n.t('map:searchOrMoveTheMap')}
       minLength={2}
-      autoFocus={false}
-      returnKeyType='search'
-      keyboardAppearance='light' 
       listViewDisplayed
       fetchDetails
       nearbyPlacesAPI="GooglePlacesSearch"

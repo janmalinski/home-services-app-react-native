@@ -136,6 +136,7 @@ export const AdCreateScreen = ({ navigation, route }: Props) => {
     //     dateAvailableTo,
     //     setHoursWorkingTime.negotiable,
     //     workingTime,
+    //     address,
     //     latitude,
     //     longitude
     //   ),

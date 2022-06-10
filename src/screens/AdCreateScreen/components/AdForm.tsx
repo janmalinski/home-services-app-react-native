@@ -86,7 +86,7 @@ export const AdForm: React.FC<Props> = ({
   
   const checkedEmploymentTypes: {id: string, name: string}[] = [];
   const checkedServices: string[] = [];
-  const formRef = useRef(null);
+  const formRef = useRef<FormikProps<AdFormData>>(null);
 
   useEffect(()=>{
       formRef?.current?.setFieldValue('address', address)
@@ -245,7 +245,7 @@ export const AdForm: React.FC<Props> = ({
                     handleSetValue('setHoursWorkingTime', !values.setHoursWorkingTime.negotiable, setFieldValue, 'negotiable')
                     handleSetValue('setHoursWorkingTime', false, setFieldValue, 'setHours')
                     }
-                  }ł
+                  }
                 />
                 {errors.setHoursWorkingTime && touched.setHoursWorkingTime && values.setHoursWorkingTime.negotiable === null && values.setHoursWorkingTime.setHours === null && <StyledText style={[styles.errorMessage, styles.marginTopTiny]}>Choose one option</StyledText> }
               </View>

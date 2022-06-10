@@ -34,7 +34,7 @@ export const SignInForm: React.FC<Props> = ({ initialValues, onSubmit, loading }
           <TextInput
             withBorder
             label={i18n.t('common:email')}
-            errorMessage={errors.email && touched.email && errors.email}
+            errorMessage={errors.email && touched.email ? errors.email : ''}
             size="small"
             secureTextEntry={false}
             value={values.email}
@@ -44,11 +44,12 @@ export const SignInForm: React.FC<Props> = ({ initialValues, onSubmit, loading }
             keyboardType="email-address"
             textContentType="emailAddress"
             blurOnSubmit
+            autoCompleteType="off"
           />
           <TextInput
             withBorder
             label={i18n.t('common:password')}
-            errorMessage={errors.password && touched.password && errors.password}
+            errorMessage={errors.password && touched.password ? errors.password : ''}
             size="small"
             secureTextEntry
             value={values.password}
@@ -57,6 +58,7 @@ export const SignInForm: React.FC<Props> = ({ initialValues, onSubmit, loading }
             autoCapitalize="none"
             textContentType="password"
             blurOnSubmit
+            autoCompleteType="off"
           />
           <Button
             onPress={handleSubmit}

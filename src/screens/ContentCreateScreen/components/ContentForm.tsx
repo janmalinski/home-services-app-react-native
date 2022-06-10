@@ -1,12 +1,14 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
-export const ContentCreateScreen  = () => {
+const ContentForm = () => {
   return (
     <View>
-      <Text> ContentCreateScreen </Text>
+      <Text>AdForm</Text>
     </View>
   )
 }
+
+export default ContentForm
 
 const styles = StyleSheet.create({})

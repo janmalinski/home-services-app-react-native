@@ -36,7 +36,7 @@ export const SignUpForm: React.FC<Props> = ({ initialValues, loading, onSubmit }
           <TextInput
             withBorder
             label={i18n.t('common:email')}
-            errorMessage={errors.email && touched.email && errors.email}
+            errorMessage={errors.email && touched.email ? errors.email : ''}
             size="small"
             secureTextEntry={false}
             value={values.email}
@@ -46,11 +46,12 @@ export const SignUpForm: React.FC<Props> = ({ initialValues, loading, onSubmit }
             keyboardType="email-address"
             textContentType="emailAddress"
             blurOnSubmit
+            autoCompleteType="off"
           />
           <TextInput
             withBorder
             label={i18n.t('common:password')}
-            errorMessage={errors.password && touched.password && errors.password}
+            errorMessage={errors.password && touched.password ? errors.password : ''}
             size="small"
             secureTextEntry
             value={values.password}
@@ -59,6 +60,7 @@ export const SignUpForm: React.FC<Props> = ({ initialValues, loading, onSubmit }
             autoCapitalize="none"
             textContentType="password"
             blurOnSubmit
+            autoCompleteType="off"
           />
           <Checkbox
             checked={values.termsAccepted}
@@ -67,13 +69,13 @@ export const SignUpForm: React.FC<Props> = ({ initialValues, loading, onSubmit }
               <Text>
                 {i18n.t('signUp:accept')}
                 <Text onPress={navigateToTermsOfUse}>
-                  <StyledText style={errors.termsAccepted ? palette.error : styles.link}>
+                  <StyledText style={errors.termsAccepted ? styles.error : styles.link}>
                     {i18n.t('signUp:termsOfUse')}
                   </StyledText>
                 </Text>
               </Text>
             }
-            errorMessage={errors.termsAccepted && touched.termsAccepted && errors.termsAccepted}
+            errorMessage={errors.termsAccepted && touched.termsAccepted ? errors.termsAccepted : 's'}
           />
           <Button
             onPress={handleSubmit}
@@ -102,4 +104,7 @@ const styles = StyleSheet.create({
   link: {
     color: palette.primary,
   },
+  error: {
+    color: palette.error
+  }
 });

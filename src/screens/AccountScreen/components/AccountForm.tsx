@@ -47,7 +47,7 @@ export const AccountForm: React.FC<Props> = ({ initialValues, loading, onSubmit 
           <TextInput
             withBorder
             label={i18n.t('common:name')}
-            errorMessage={errors.firstName && touched.firstName && errors.firstName}
+            errorMessage={errors.firstName && touched.firstName ? errors.firstName : ''}
             size="small"
             secureTextEntry={false}
             value={values.firstName}
@@ -55,11 +55,12 @@ export const AccountForm: React.FC<Props> = ({ initialValues, loading, onSubmit 
             onBlur={handleBlur('firstName')}
             autoCapitalize="none"
             blurOnSubmit
+            autoCompleteType="off"
           />
           <TextInput
             withBorder
             label={i18n.t('common:phoneNumber')}
-            errorMessage={errors.phoneNumber && touched.phoneNumber && errors.phoneNumber}
+            errorMessage={errors.phoneNumber && touched.phoneNumber ? errors.phoneNumber : ''}
             size="small"
             value={values.phoneNumber}
             onChangeText={handleChange('phoneNumber')}
@@ -67,7 +68,7 @@ export const AccountForm: React.FC<Props> = ({ initialValues, loading, onSubmit 
             autoCapitalize="none"
             blurOnSubmit
             keyboardType={'phone-pad'}
-            // containerStyle={{marginBottom: -20}}
+            autoCompleteType="off"
           />
           <Checkbox
             checked={values.consentPhoneNumberVisibility}
@@ -79,7 +80,7 @@ export const AccountForm: React.FC<Props> = ({ initialValues, loading, onSubmit 
           <TextInput
             withBorder
             label={i18n.t('common:email')}
-            errorMessage={errors.email && touched.email && errors.email}
+            errorMessage={errors.email && touched.email ? errors.email : ''}
             size="small"
             secureTextEntry={false}
             value={values.email}
@@ -89,6 +90,7 @@ export const AccountForm: React.FC<Props> = ({ initialValues, loading, onSubmit 
             keyboardType="email-address"
             textContentType="emailAddress"
             blurOnSubmit
+            autoCompleteType="off"
           />
           <Button
             onPress={handleSubmit}

@@ -30,7 +30,7 @@ export const ResetPasswordForm: React.FC<Props> = ({ initialValues, loading, onS
             <TextInput
               withBorder
               label={i18n.t('common:email')}
-              errorMessage={errors.email && touched.email && errors.email}
+              errorMessage={errors.email && touched.email ? errors.email : ''}
               size="small"
               value={values.email}
               onChangeText={handleChange('email')}
@@ -39,6 +39,7 @@ export const ResetPasswordForm: React.FC<Props> = ({ initialValues, loading, onS
               keyboardType="email-address"
               textContentType="emailAddress"
               blurOnSubmit
+              autoCompleteType="off"
             />
             <Button
               onPress={handleSubmit}

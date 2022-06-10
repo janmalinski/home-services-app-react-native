@@ -33,7 +33,7 @@ export const RegistrationCodeSignUpForm: React.FC<Props> = ({ initialValues, loa
           <TextInput
             withBorder
             label={i18n.t('registrationCodeSignUp:registrationCode')}
-            errorMessage={errors.code && touched.code && errors.code}
+            errorMessage={errors.code && touched.code ? errors.code : ''}
             size="small"
             secureTextEntry={false}
             value={values.code}
@@ -42,6 +42,7 @@ export const RegistrationCodeSignUpForm: React.FC<Props> = ({ initialValues, loa
             autoCapitalize="none"
             blurOnSubmit
             keyboardType='number-pad'
+            autoCompleteType="off"
           />
           <Button
             onPress={handleSubmit}
