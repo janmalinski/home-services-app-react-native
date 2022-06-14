@@ -8,7 +8,8 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 
 import { RootNavigator } from './navigation'; 
-import { Toast }  from 'app/components/ToastControl';
+// import { Toast }  from 'app/components/ToastControl';
+import { Alert } from './components';
 import { store, persistor } from 'app/store';
 import { i18n } from './config/translations';
 
@@ -25,7 +26,8 @@ const App = () => {
           <SafeAreaProvider>
             <StatusBar backgroundColor="transparent" translucent barStyle="dark-content" />
             <RootNavigator />
-            <Toast />
+            {/* <Toast /> */}
+            <Alert />
           </SafeAreaProvider>
         </I18nextProvider>
       </PersistGate>

@@ -1,7 +1,7 @@
 import { takeLatest, call, put, fork } from 'redux-saga/effects';
 
 import * as Api from 'app/api';
-import { ToastControl } from 'app/components/ToastControl';
+import { ToastControl } from 'app/components';
 import AuthService from 'app/lib/services/AuthService';
 import * as Actions from 'app/store/actions';
 import * as Types from 'app/types';
@@ -85,7 +85,8 @@ function* signIn({ payload }: signInParams) {
     yield put(Actions.setSignInSuccess());
   } catch (error: any) {
     if(error.response){
-      ToastControl.show(error.response.data.message, 'error');
+      yield put(Actions.setAlert('Test', 'info'))
+      // ToastControl.show(error.response.data.message, 'error');
       yield put(Actions.setSignInFailed({ message: error.response.data.message }));
     } else {
       ToastControl.show('Something went wrong', 'error')

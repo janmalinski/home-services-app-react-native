@@ -12,3 +12,4 @@ export { ListItem } from './ListItem';
 export { WavyHeader } from './WavyHeader';
 export { Image } from './Image';
 export { DialogTemplate } from './DialogTemplate';
+export { Alert } from './Alert';

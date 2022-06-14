@@ -1,5 +1,9 @@
 import { RootState } from 'app/store';
 
-export function getAlert(state: RootState) {
+export function getAlertMessage(state: RootState) {
   return state.alert.message;
+}
+
+export function getAlertStatus(state: RootState) {
+  return state.alert.status;
 }
