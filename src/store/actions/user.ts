@@ -99,4 +99,32 @@ export const updateUserRequest = (
   };
 };
 
-export type GetUserAction = ReturnType<typeof getUserRequest>;
+
+export const getNearbyUsersRequest = (token: string) => {
+  return {
+    type: Types.USER.GET_NEARBY_USERS_REQUEST,
+  };
+};
+
+export const setLoadingGetNearbyUsers = () => ({
+  type: Types.USER.GET_NEARBY_USERS_PENDING,
+});
+
+export const getNearbyUsersSuccess = ({ nearbyUsers }: { nearbyUsers: Types.USER[] }) => {
+  return {
+    type: Types.USER.GET_NEARBY_USERS_SUCCESS,
+    payload: {
+      nearbyUsers,
+    },
+  };
+};
+
+export const getNearbyUserFailed = ({ message }: { message: string }) => {
+  return {
+    type: Types.USER.GET_NEARBY_USERS_FAILD,
+    payload: {
+      message,
+    },
+  };
+};
+

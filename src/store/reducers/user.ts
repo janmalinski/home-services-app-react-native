@@ -22,13 +22,14 @@ interface User {
 }
 
 export interface UserState {
-  data: User;
+  user: User;
+  nearbyUsers: User[],
   isLoading: boolean;
   error: string;
 }
 
 const INITIAL_STATE: UserState = {
-  data: {
+  user: {
     id: '',
     email: '',
     name: '',
@@ -48,6 +49,7 @@ const INITIAL_STATE: UserState = {
       }
     ]
   },
+  nearbyUsers: [],
   isLoading: false,
   error: '',
 };
@@ -90,7 +92,7 @@ export default function user(state = INITIAL_STATE, action: any) {
     case Types.USER.UPDATE_USER_SUCCESS: {
       return {
         ...state,
-        data: action.payload.user,
+        user: action.payload.user,
         isLoading: false,
         error: '',
       };
@@ -114,6 +116,31 @@ export default function user(state = INITIAL_STATE, action: any) {
     }
 
     case Types.USER.GET_USER_AVATAR_FAILD: {
+      return {
+        ...state,
+        isLoading: false,
+        error: action.payload.message,
+      };
+    }
+
+    case Types.USER.GET_NEARBY_USERS_PENDING: {
+      return {
+        ...state,
+        isLoading: true,
+        error: '',
+      };
+    }
+
+    case Types.USER.GET_NEARBY_USERS_SUCCESS: {
+      return {
+        ...state,
+        nearbyUsers: action.payload.users,
+        isLoading: false,
+        error: '',
+      };
+    }
+
+    case Types.USER.GET_NEARBY_USERS_FAILD: {
       return {
         ...state,
         isLoading: false,

@@ -28,8 +28,8 @@ export const updateUser = (
   phoneNumber: string,
   consentPhoneNumberVisibility: boolean,
   email: string,
-  latitude: string,
-  longitude: string,
+  latitude: number,
+  longitude: number,
 ) => {
   const body = {
     name: firstName,
@@ -44,4 +44,16 @@ export const updateUser = (
       Authorization: 'Bearer ' + token,
     },
   });
+};
+
+export const getNearbyUsers = (
+  latitude: number,
+  longitude: number,
+) => {
+  const body = {
+    latitude,
+    longitude,
+  };
+  
+  return API.post('user/get-nearby-users',body);
 };
