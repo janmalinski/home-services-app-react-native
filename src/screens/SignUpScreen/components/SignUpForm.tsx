@@ -69,13 +69,13 @@ export const SignUpForm: React.FC<Props> = ({ initialValues, loading, onSubmit }
               <Text>
                 {i18n.t('signUp:accept')}
                 <Text onPress={navigateToTermsOfUse}>
-                  <StyledText style={errors.termsAccepted ? styles.error : styles.link}>
+                  <StyledText style={errors.termsAccepted && touched.termsAccepted ? styles.error : styles.link}>
                     {i18n.t('signUp:termsOfUse')}
                   </StyledText>
                 </Text>
               </Text>
             }
-            errorMessage={errors.termsAccepted && touched.termsAccepted ? errors.termsAccepted : 's'}
+            errorMessage={errors.termsAccepted && touched.termsAccepted && errors.termsAccepted}
           />
           <Button
             onPress={handleSubmit}
