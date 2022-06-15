@@ -12,7 +12,7 @@ export interface CheckboxProps {
   size?: 'small' | 'medium';
   disabled?: boolean;
   raised?: boolean;
-  errorMessage?: string;
+  errorMessage?: string | boolean;
   containerStyle?: StyleProp<ViewStyle>;
 }
 
