@@ -2,7 +2,7 @@ import { Image, StyleSheet, View, ImageBackground, TouchableOpacity } from 'reac
 import React, { useCallback } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { Button, FullScreenTemplate, StyledText } from 'app/components';
+import { Button, StyledText } from 'app/components';
 import * as Types from 'app/types';
 import { typography, palette } from 'app/config/styles';
 
@@ -28,7 +28,6 @@ export const WelcomeScreen = ({ navigation }: Props) => {
     )
 
   return (
-    <FullScreenTemplate>
       <ImageBackground
         source={{
           uri: 'https://media.istockphoto.com/photos/nothing-is-better-than-team-work-picture-id590277932?s=612x612',
@@ -54,7 +53,6 @@ export const WelcomeScreen = ({ navigation }: Props) => {
         </View>
       </View>
     </ImageBackground>
-  </FullScreenTemplate>
   )
 }
 
