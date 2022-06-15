@@ -57,8 +57,8 @@ export interface Props  {
 }
 
 const validationSchema = Yup.object().shape({
-  serviceIds: Yup.array().min(1).required(i18n.t('validation:required')),
-  employmentTypeIds: Yup.array().of(Yup.string()).required(i18n.t('validation:required')),
+  serviceIds: Yup.array().min(1, 'Select at least one service'),
+  employmentTypeIds: Yup.array().min(1, 'Select at least one employment type'),
   dateAvailableFrom: Yup.date().required(i18n.t('validation:required')),
   dateAvailableTo: Yup.date().required(i18n.t('validation:required')),
   fixedTerm: Yup.boolean().required(i18n.t('validation:required')),
@@ -66,8 +66,9 @@ const validationSchema = Yup.object().shape({
     negotiable: Yup.boolean().required(i18n.t('validation:required')),
     setHours: Yup.boolean().required(i18n.t('validation:required'))
   }),
-  description: Yup.string().required(i18n.t('validation:required')),
-  address: Yup.string().required(i18n.t('validation:required')),
+  address: Yup.string().required('Detect location or set location manually'),
+  description: Yup.string().required('Description is required'),
+  
 });  
 
 export const AdForm: React.FC<Props> = ({
@@ -146,7 +147,7 @@ export const AdForm: React.FC<Props> = ({
 
   const navigateToMap = useCallback( () => {
     if(roles.length === 1){
-      navigation.navigate(Types.Route.Map, {redirectAfterSubmit: Types.Route.AdCreate ,userType: roles[0]});
+      navigation.navigate(Types.Route.AdCreateMap, {redirectAfterSubmit: Types.Route.AdCreate ,userType: roles[0]});
     } else {
       console.log('SHOW_USER_ROLE_CHOICE_BUTTONS ')
     }
@@ -157,9 +158,6 @@ export const AdForm: React.FC<Props> = ({
   const renderForm = useCallback(
     (formProps: FormikProps<AdFormData>) => {
       const { handleChange, handleBlur, setFieldValue, values, handleSubmit, errors, touched } = formProps;
-     console.log('VALUES', values)
-      console.log('ERRORS', errors);
-    
 
       return (
         <View>
@@ -171,7 +169,7 @@ export const AdForm: React.FC<Props> = ({
               <Button
                 key={typeemployment.id}
                 buttonStyle={[
-                  { marginBottom: 10 },
+                  styles.typeofEmploymentButton,
                   values.employmentTypeIds.includes(typeemployment.id)
                     ? { backgroundColor: '#def5f1' }
                     : { backgroundColor: '#F6F6F6' },
@@ -366,7 +364,7 @@ const styles = StyleSheet.create({
     color: palette.grayscale09,
   },
   checkboxContainer: {
-    marginBottom: 0,
+    marginBottom: -spacing.small,
   },
   label: {
     ...typography.subtitle1,
@@ -390,5 +388,8 @@ const styles = StyleSheet.create({
   },
   negativeMarginBottomRegular: {
     marginBottom: -spacing.regular
-  }
+  },
+  typeofEmploymentButton: { 
+    marginBottom: 5
+   }
 });
