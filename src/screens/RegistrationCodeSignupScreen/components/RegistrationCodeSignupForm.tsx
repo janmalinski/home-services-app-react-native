@@ -23,7 +23,8 @@ const validationSchema = Yup.object().shape({
     .required(i18n.t('validation:required')),
 });
 
-export const RegistrationCodeSignUpForm: React.FC<Props> = ({ initialValues, loading, onSubmit }) => {
+export const RegistrationCodeSignUpForm = ({ initialValues, loading, onSubmit }: Props) => {
+
   const renderForm = useCallback(
     (props: FormikProps<RegistrationCodeSignUpFormData>) => {
       const { handleChange, handleBlur, values, handleSubmit, errors, setFieldValue, touched } = props;
