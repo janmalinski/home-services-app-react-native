@@ -1,7 +1,6 @@
 import { takeLatest, call, put, fork } from 'redux-saga/effects';
 
 import * as Api from 'app/api';
-import { ToastControl } from 'app/components';
 import AuthService from 'app/lib/services/AuthService';
 import * as Actions from 'app/store/actions';
 import * as Types from 'app/types';
@@ -34,14 +33,14 @@ function* signUp({ payload }: signUpParams) {
       language
     });
     yield put(Actions.setSignUpSuccess());
-    navigationService.navigate(Types.Route.RegistrationCodeSignUp)
-    ToastControl.show(result.data.message, 'info')
+    navigationService.navigate(Types.Route.RegistrationCodeSignUp);
+    yield put (Actions.setAlert(result.data.message, 'info'));
   } catch (error: any) {
     if(error.response){
-      ToastControl.show(error.response.data.message, 'error');
+      yield put (Actions.setAlert(error.response.data.message, 'error'));
       yield put(Actions.setSignUpFailed({ message: error.response.data.message }));
     } else {
-      ToastControl.show('Something went wrong', 'error')
+      yield put (Actions.setAlert('Something went wrong', 'error'));
     }
   }
 }
@@ -58,14 +57,14 @@ function* verify({ payload }: verifyParams ) {
      code
     });
     yield put(Actions.setVerifySuccess());
-    navigationService.navigate(Types.Route.SignIn)
-    ToastControl.show(result.data.message, 'info')
+    navigationService.navigate(Types.Route.SignIn);
+    yield put (Actions.setAlert(result.data.message, 'info'));
   } catch (error: any) {
     if(error.response){
-      ToastControl.show(error.response.data.message, 'error');
+      yield put (Actions.setAlert(error.response.data.message, 'error'));
       yield put(Actions.setVerifyFailed({ message: error.response.data.message }));
     } else {
-      ToastControl.show('Something went wrong', 'error')
+      yield put (Actions.setAlert('Something went wrong', 'error'));
     }
   }
 }
@@ -85,11 +84,10 @@ function* signIn({ payload }: signInParams) {
     yield put(Actions.setSignInSuccess());
   } catch (error: any) {
     if(error.response){
-      yield put(Actions.setAlert('Test', 'info'))
-      // ToastControl.show(error.response.data.message, 'error');
+      yield put(Actions.setAlert(error.response.data.message, 'error'))
       yield put(Actions.setSignInFailed({ message: error.response.data.message }));
     } else {
-      ToastControl.show('Something went wrong', 'error')
+      yield put(Actions.setAlert('Something went wrong', 'error'))
     }
   }
 }

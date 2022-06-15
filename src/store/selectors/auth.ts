@@ -7,3 +7,7 @@ export function isLoggedIn(state: RootState) {
 export function isLoading(state: RootState) {
   return state.auth.isLoading;
 }
+
+export function isVerificationEmailSent(state: RootState) {
+  return state.auth.verificationEmailSent;
+}

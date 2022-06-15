@@ -2,22 +2,19 @@ import React, { useRef, useEffect } from "react";
 import {
   StyleSheet,
   Text,
-  View,
   Animated,
-  TouchableOpacity,
-  Dimensions,
 } from "react-native";
 import { useSelector, useDispatch } from 'react-redux';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { selectors, actions } from 'app/store';
-import { palette } from "app/config/styles";
+import { palette, spacing } from "app/config/styles";
 
 const DISMISS_INTERVAL = 4000;
 
 export const Alert = () => {
 
-  const windowHeight = Dimensions.get("window").height;
-  const popAnim = useRef(new Animated.Value(windowHeight * -1)).current;
+  const animatedValue = useRef(new Animated.Value(0)).current;
   
   const dispatch = useDispatch();
   const message = useSelector(selectors.getAlertMessage);
@@ -31,8 +28,8 @@ useEffect(()=>{
   
 
   const popIn = () => {
-    Animated.timing(popAnim, {
-        toValue: windowHeight * 0.8 * -1,
+    Animated.timing(animatedValue, {
+        toValue: 1,
         duration: 300,
         useNativeDriver: true
     }).start(popOut() as any);
@@ -40,9 +37,9 @@ useEffect(()=>{
 
   const popOut = () => {
     setTimeout(() => {
-      Animated.timing(popAnim, {
-        toValue: windowHeight * -1,
-        duration: DISMISS_INTERVAL,
+      Animated.timing(animatedValue, {
+        toValue: 0,
+        duration: 200,
         useNativeDriver: true,
       }).start(removeAlert);
   
@@ -50,57 +47,43 @@ useEffect(()=>{
   };
 
   const removeAlert = () => dispatch(actions.removeAlert());
-
+  
+  let animation = animatedValue.interpolate({
+    inputRange: [0, .3, 1],
+    outputRange: [-70, -10, 0]
+  })
 
   return (
-    <Animated.View
-    style={[
-      styles.toastContainer,
-      {backgroundColor: palette[status]},
-      {
-        transform: [{ translateY: popAnim }],
-      },
-    ]}
-  >
-    <View style={styles.toastRow}>
-      <View style={styles.toastText}>
-        <Text style={{ fontWeight: "bold", fontSize: 15 }}>
-            { message }
-        </Text>
-      </View>
-    </View>
-</Animated.View>
-
-  )
+          <Animated.View
+            style={[
+              styles.toastContainer,
+              { backgroundColor: palette[status] },
+              {
+                transform: [{ translateY: animation }],
+              },
+            ]}
+          >
+            <SafeAreaView edges={['top']}>
+              <Text style={styles.text}>
+                  { message }
+              </Text>
+            </SafeAreaView>
+          </Animated.View>
+        );
 }
 
 const styles = StyleSheet.create({
     toastContainer: {
-      height: 60,
-      width: 350,
-      // backgroundColor: "#f5f5f5",
-      justifyContent: "center",
-      alignItems: "center",
-      borderRadius: 10,
-      shadowColor: "#000",
-      shadowOffset: {
-        width: 0,
-        height: 2,
-      },
-      shadowOpacity: 0.25,
-      shadowRadius: 3.84,
-      elevation: 5,
-      marginLeft: 'auto',
-      marginRight: 'auto'
+      height: 70, 
+      position: 'absolute',
+      left:0, 
+      top:0, 
+      right:0, 
+      justifyContent:  'center' 
     },
-    toastRow: {
-      width: "90%",
-      flexDirection: "row",
-      alignItems: "center",
-      justifyContent: "space-evenly",
-    },
-    toastText: {
-      width: "70%",
-      padding: 2,
-    },
+    text:{ 
+      fontWeight: 'bold',
+      fontSize: spacing.large,
+      marginStart: spacing.large
+     }
   });

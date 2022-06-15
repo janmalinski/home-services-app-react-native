@@ -4,7 +4,6 @@ export { StyledText } from './StyledText';
 export { LoadingIndicator } from './LoadingIndicator';
 export { KeyboardAvoidingComponent } from './KeyboardAvoidingComponent';
 export { FullScreenTemplate } from './FullScreenTemplate';
-export { ToastControl } from './ToastControl';
 export { TextInput } from './TextInput';
 export { Checkbox } from './Checkbox';
 export { BottomTabBarIcon } from './BottomTabBarIcon';

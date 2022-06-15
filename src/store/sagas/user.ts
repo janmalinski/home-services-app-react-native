@@ -1,7 +1,6 @@
 import { takeEvery, call, put, fork } from 'redux-saga/effects';
 
 import * as Api from 'app/api';
-import { ToastControl } from 'app/components/ToastControl';
 import * as Actions from 'app/store/actions';
 import * as Types from 'app/types';
 
@@ -16,17 +15,21 @@ interface ResponseGenerator {
 }
 
 type getUserParams = {payload: { token: string }; type: string };
+
 type updateUserParams = {
   token: string;
   firstName: string;
   phoneNumber: string;
   consentPhoneNumberVisibility: boolean;
   email: string;
-  latitude: string;
-  longitude: string;
+  latitude: number;
+  longitude: number;
   type: string;
 };
+
 type getUserAvatarParams = { payload: { token: string; avatar: string }; type: string };
+
+type getNearbyUsersParams = { payload: { latitude: number, longitude: number }; type: string };
 
 function* getUser(payload: getUserParams) {
   try {
@@ -39,10 +42,10 @@ function* getUser(payload: getUserParams) {
     );
   } catch (error: any) {
     if(error.response){
-      ToastControl.show(error.response.data.message, 'error');
+      yield put(Actions.setAlert(error.response.data.message, 'error'));
       yield put(Actions.getUserFailed({ message: error.response.data.message }));
     } else {
-      ToastControl.show('Something went wrong', 'error')
+      yield put(Actions.setAlert('Something went wrong', 'error'));
     }
   }
 }
@@ -57,15 +60,11 @@ function* updateUser(
   try {
     const { token, firstName, phoneNumber, consentPhoneNumberVisibility, email, latitude, longitude} = payload;
     yield put(Actions.setLoadingUpdateUser());
+
+    
     const result: ResponseGenerator = yield call(
       Api.updateUser,
-      token,
-      firstName,
-      phoneNumber,
-      consentPhoneNumberVisibility,
-      email,
-      latitude,
-      longitude
+      token, firstName, phoneNumber, consentPhoneNumberVisibility, email, latitude, longitude
     );
     yield put(
       Actions.updateUserSuccess({
@@ -74,10 +73,10 @@ function* updateUser(
     );
   } catch (error: any) {
     if(error.response){
-      ToastControl.show(error.response.data.message, 'error');
+      yield put(Actions.setAlert(error.response.data.message, 'error'));
       yield put(Actions.updateUserFailed({ message: error.response.data.message }));
     } else {
-      ToastControl.show('Something went wrong', 'error')
+      yield put(Actions.setAlert('Something went wrong', 'error'));
     }
   }
 }
@@ -96,10 +95,10 @@ function* getUserAvatar(payload: getUserAvatarParams) {
     yield put(Actions.getUserAvatarSuccess(result.data.avatarURL));
   } catch (error: any) {
     if(error.response){
-      ToastControl.show(error.response.data.message,'errror');
+      yield put(Actions.setAlert(error.response.data.message, 'error'));
       yield put(Actions.getUserAvatarFailed({ message: error.response.data.message }));
     } else {
-      ToastControl.show('Something went wrong','errror')
+      yield put(Actions.setAlert('Something went wrong','errror'));
     }
   }
 }
@@ -108,11 +107,35 @@ function* watchGetUserAvatarRequest() {
   yield takeEvery(Types.USER.POST_USER_AVATAR_REQUEST, getUserAvatar);
 }
 
+function* getNearbyUsers(payload: getNearbyUsersParams) {
+  try {
+    yield put(Actions.setLoadingGetUser());
+    const { latitude, longitude } = payload.payload;
+    const result: ResponseGenerator = yield call(Api.getNearbyUsers, latitude, longitude);
+    yield put(
+      Actions.getNearbyUsersSuccess({
+        nearbyUsers: result.data.users
+      }),
+    );
+  } catch (error: any) {
+    if(error.response){
+      yield put(Actions.setAlert(error.response.data.message, 'error'));
+      yield put(Actions.getNearbyUserFailed({ message: error.response.data.message }));
+    } else {
+      yield put(Actions.setAlert('Something went wrong','errror'));
+    }
+  }
+}
+
+function* watchGetNearbyUsersRequest() {
+  yield takeEvery(Types.USER.GET_NEARBY_USERS_REQUEST, getNearbyUsers);
+}
 
 const userSagas = [
     fork(watchGetUserRequest),
     fork(watchGetUserAvatarRequest),
     fork(watchUpdateUserRequest),
+    fork(watchGetNearbyUsersRequest)
   ];
   
   export default userSagas;
