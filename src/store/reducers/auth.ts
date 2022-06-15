@@ -2,12 +2,14 @@ import * as Types from 'app/types';
 
 export interface AuthState {
   token: string;
+  verificationEmailSent: boolean;
   isLoading: boolean;
   error: string;
 }
 
 const INITIAL_STATE: AuthState = {
   token: '',
+  verificationEmailSent: false,
   isLoading: false,
   error: '',
 };
@@ -17,6 +19,7 @@ export default function auth(state = INITIAL_STATE, action: any) {
     case Types.AUTH.SIGN_UP_PENDING: {
       return {
         ...state,
+        verificationEmailSent: false,
         isLoading: true,
         error: '',
       };
@@ -25,6 +28,7 @@ export default function auth(state = INITIAL_STATE, action: any) {
     case Types.AUTH.SIGN_UP_SUCCESS: {
       return {
         ...state,
+        verificationEmailSent: true,
         isLoading: false,
         error: '',
       };
@@ -33,6 +37,7 @@ export default function auth(state = INITIAL_STATE, action: any) {
     case Types.AUTH.SIGN_UP_FAILED: {
       return {
         ...state,
+        verificationEmailSent: false,
         isLoading: false,
         error: action.payload.message,
       };
