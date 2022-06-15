@@ -81,7 +81,7 @@ export const StackNavigator = () => {
             />  
             <Stack.Screen
                 options={{ title: i18n.t('location:location'), presentation: 'modal', ...defaultScreenOptions}}
-                name={Types.Route.Map}
+                name={Types.Route.AdCreateMap}
                 component={MapScreen}
             />
             <Stack.Screen
@@ -99,9 +99,9 @@ export const StackNavigator = () => {
 
     return (
         <Stack.Navigator
-            initialRouteName={isLoggedIn ? Types.Route.MainTab : Types.Route.Welcome}
+        initialRouteName={isLoggedIn ? Types.Route.MainTab : Types.Route.Welcome}
         >
-            {isLoggedIn ? privateScreens : welcomeScreens}
+        {isLoggedIn ? privateScreens : welcomeScreens}
         </Stack.Navigator>
     );
 };
