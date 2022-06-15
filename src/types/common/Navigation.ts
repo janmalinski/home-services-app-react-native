@@ -8,6 +8,7 @@ export enum Route {
   Location = 'Location',
   Map = 'Map',
   ContentCreate = 'ContentCreate',
+  AdCreateMap = 'AdCreateMap',
   AdCreate = 'AdCreate',
   AdList = 'AdList',
   MainTab = 'MainTab',
@@ -36,7 +37,7 @@ export type MainTabParams = {
   [Route.Settings]: NoParams;
 };
 
-interface SignUpScreenParams extends  Pick<MapScreenParams, 'userType'>, Pick<Coordinates, 'latitude' | 'longitude'> {};
+interface SignUpScreenParams extends Pick<MapScreenParams, 'userType'>, Pick<Coordinates, 'latitude' | 'longitude'> {};
 
 interface MapScreenParams {
   redirectAfterSubmit: string;
@@ -53,6 +54,7 @@ export type RootStackParams = {
   [Route.Location]: NoParams;
   [Route.Map]: MapScreenParams,
   [Route.AdCreate]: AdCreateParams;
+  [Route.AdCreateMap]: MapScreenParams,
   [Route.SignIn]: NoParams;
   [Route.SignUp]: SignUpScreenParams;
   [Route.RegistrationCodeSignUp]: NoParams;
