@@ -31,9 +31,8 @@ const [address, setAddress] = useState<string>('');
 const [addressChangedByInput, setAddressChangeByInput] = useState(false);
 
 useEffect(()=>{
+    hasLocationPermission().then(()=>getLocation());
     Geocoder.init(Config.GEOCODING_API_KEY);
-    hasLocationPermission();
-    getLocation();
 },[])
 
 const hasLocationPermissionIOS = async() =>{
