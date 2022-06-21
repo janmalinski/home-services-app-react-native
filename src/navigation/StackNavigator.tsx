@@ -99,7 +99,7 @@ export const StackNavigator = () => {
         component={SignOutDialogScreen}
       />
       <Stack.Screen
-        options={{ title: i18n.t('account:account') }}
+        options={{ title: i18n.t('account:account'), ...defaultScreenOptions }}
         name={Types.Route.Account}
         component={AccountScreen}
       />
