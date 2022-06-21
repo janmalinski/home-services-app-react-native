@@ -9,7 +9,9 @@
     "test": "jest",
     "lint": "eslint '**/*.{js,ts,tsx}'",
     "lint:fix": "eslint '**/*.{js,ts,tsx}' --fix",
-    "typescript:check": "tsc --noEmit"
+    "typescript:check": "tsc --noEmit",
+    "prettier:fix": "prettier --write '**/*.{js,ts,tsx}'",
+    "prettier:check": "prettier --list-different \"**/*.{js,ts,tsx}\""
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^1.17.5",
@@ -60,8 +62,15 @@
     "@typescript-eslint/parser": "^5.17.0",
     "babel-jest": "^26.6.3",
     "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.30.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-native": "^4.0.0",
     "jest": "^26.6.3",
     "metro-react-native-babel-preset": "^0.67.0",
+    "prettier": "^2.7.1",
     "react-native-svg-transformer": "^1.0.0",
     "react-test-renderer": "17.0.2",
     "typescript": "^4.4.4"
