@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 import { Button as ElementsButton, ButtonProps as ElementsButtonProps } from 'react-native-elements';
 
 import { Icon } from 'app/components';
-import { typography, palette } from 'app/config/styles';
+import { typography, palette, spacing } from 'app/config/styles';
 
 export interface ButtonProps extends ElementsButtonProps {
   color?: 'primary' | 'secondary';
@@ -115,9 +115,9 @@ const styles = StyleSheet.create({
     borderWidth: 1,
   },
   iconRight: {
-    marginStart: 12,
+    marginStart: spacing.regular,
   },
   iconLeft: {
-    marginEnd: 12,
+    marginEnd: spacing.regular,
   },
 });

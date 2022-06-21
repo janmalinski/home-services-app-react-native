@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import { StyleSheet, TouchableOpacity, Text, View, StyleProp, ViewStyle } from 'react-native';
 
-import { palette, typography } from 'app/config/styles';
+import { palette, spacing, typography } from 'app/config/styles';
 
 import { Icon } from '../Icon';
 
@@ -42,7 +42,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
               name="check"
               type="font-awesome"
               color={palette.Checkbox[select][state].icon}
-              size={12}
+              size={spacing.regular}
               containerStyle={[
                 styles.iconContainer,
                 size === 'small' ? styles.iconSmall : styles.iconMedium,
