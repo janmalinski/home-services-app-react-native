@@ -10,11 +10,7 @@ export const setLoadingGetRole = () => ({
   type: Types.ROLE.GET_ROLE_PENDING,
 });
 
-export const getRoleSuccess = ({
-  roles,
-}: {
-  roles: Types.Role[];
-}) => {
+export const getRoleSuccess = ({ roles }: { roles: Types.Role[] }) => {
   return {
     type: Types.ROLE.GET_ROLE_SUCCESS,
     payload: {

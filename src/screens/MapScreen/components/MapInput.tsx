@@ -1,28 +1,30 @@
-import { View, StyleSheet } from 'react-native';
 import React, { useCallback, useRef } from 'react';
-import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
+import { View, StyleSheet } from 'react-native';
 import Config from 'react-native-config';
+import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 
 import { Icon } from 'app/components';
-import { i18n } from 'app/config/translations';
 import { palette, spacing } from 'app/config/styles';
+import { i18n } from 'app/config/translations';
 
-interface Props{
+interface Props {
   onAddressChange: (details: any) => void;
 }
 
-export const MapInput = ({onAddressChange}: Props) => {
-  const ref = useRef<any>(null)
-  const handleOnPressInput = useCallback((details) => {
-    onAddressChange(details);
-    ref?.current?.setAddressText('');
-  },[onAddressChange]);
+export const MapInput = ({ onAddressChange }: Props) => {
+  const ref = useRef<any>(null);
+  const handleOnPressInput = useCallback(
+    (details) => {
+      onAddressChange(details);
+      ref?.current?.setAddressText('');
+    },
+    [onAddressChange],
+  );
 
-  
-  const handleOnPressIcon = () =>   ref?.current?.focus() 
+  const handleOnPressIcon = () => ref?.current?.focus();
 
   return (
-    <GooglePlacesAutocomplete 
+    <GooglePlacesAutocomplete
       ref={ref}
       placeholder={i18n.t('map:searchOrMoveTheMap')}
       minLength={2}
@@ -31,20 +33,28 @@ export const MapInput = ({onAddressChange}: Props) => {
       nearbyPlacesAPI="GooglePlacesSearch"
       enablePoweredByContainer={false}
       debounce={200}
-      renderDescription={row => row.description} 
-      onPress={(_data, details = null) => {handleOnPressInput(details)}}
+      renderDescription={(row) => row.description}
+      onPress={(_data, details = null) => {
+        handleOnPressInput(details);
+      }}
       query={{
-          key: Config.GOOGLE_PLACES_API_KEY,
-          language: 'en',
+        key: Config.GOOGLE_PLACES_API_KEY,
+        language: 'en',
       }}
       renderRightButton={() => (
         <View style={styles.searchIconContainer}>
-          <Icon type='ant-design' name='search1' color={palette.text} size={16} onPress={handleOnPressIcon}  />
+          <Icon
+            type="ant-design"
+            name="search1"
+            color={palette.text}
+            size={16}
+            onPress={handleOnPressIcon}
+          />
         </View>
       )}
     />
-   )
-}
+  );
+};
 
 const styles = StyleSheet.create({
   searchIconContainer: {
@@ -52,7 +62,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     paddingRight: spacing.small,
-    backgroundColor: palette.backgroundLight
-  }
-})
-
+    backgroundColor: palette.backgroundLight,
+  },
+});

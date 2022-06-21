@@ -1,10 +1,10 @@
 import adReducer, { AdState } from './ad';
 import alertReducer, { AlertState } from './alert';
 import authReducer, { AuthState } from './auth';
+import roleReducer, { RoleState } from './role';
 import serviceReducer, { ServiceState } from './service';
 import typeemploymentReducer, { TypeemploymentState } from './typeemployment';
 import userReducer, { UserState } from './user';
-import roleReducer, { RoleState } from './role';
 
 export {
   alertReducer,
@@ -20,5 +20,5 @@ export {
   typeemploymentReducer,
   TypeemploymentState,
   roleReducer,
-  RoleState
+  RoleState,
 };

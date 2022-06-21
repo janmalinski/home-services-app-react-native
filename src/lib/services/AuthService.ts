@@ -4,8 +4,8 @@ export default class AuthService {
   static async resetAsyncStorage() {
     try {
       await AsyncStorage.clear();
-    } catch (e) {
-      console.log('ERROR_AUTHSERVICE_RESET_ASYNC_STORAGE', e);
+    } catch (error) {
+      console.log('ERROR_AUTHSERVICE_RESET_ASYNC_STORAGE', error);
     }
   }
 }

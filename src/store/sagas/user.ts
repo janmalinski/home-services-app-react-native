@@ -4,7 +4,6 @@ import * as Api from 'app/api';
 import * as Actions from 'app/store/actions';
 import * as Types from 'app/types';
 
-
 interface ResponseGenerator {
   config?: any;
   data?: any;
@@ -14,7 +13,7 @@ interface ResponseGenerator {
   statusText?: string;
 }
 
-type getUserParams = {payload: { token: string }; type: string };
+type getUserParams = { payload: { token: string }; type: string };
 
 type updateUserParams = {
   token: string;
@@ -29,7 +28,7 @@ type updateUserParams = {
 
 type getUserAvatarParams = { payload: { token: string; avatar: string }; type: string };
 
-type getNearbyUsersParams = { payload: { latitude: number, longitude: number }; type: string };
+type getNearbyUsersParams = { payload: { latitude: number; longitude: number }; type: string };
 
 function* getUser(payload: getUserParams) {
   try {
@@ -41,7 +40,7 @@ function* getUser(payload: getUserParams) {
       }),
     );
   } catch (error: any) {
-    if(error.response){
+    if (error.response) {
       yield put(Actions.setAlert(error.response.data.message, 'error'));
       yield put(Actions.getUserFailed({ message: error.response.data.message }));
     } else {
@@ -54,17 +53,21 @@ function* watchGetUserRequest() {
   yield takeEvery(Types.USER.GET_USER_REQUEST, getUser);
 }
 
-function* updateUser(
-  payload: updateUserParams
-) {
+function* updateUser(payload: updateUserParams) {
   try {
-    const { token, firstName, phoneNumber, consentPhoneNumberVisibility, email, latitude, longitude} = payload;
+    const { token, firstName, phoneNumber, consentPhoneNumberVisibility, email, latitude, longitude } =
+      payload;
     yield put(Actions.setLoadingUpdateUser());
 
-    
     const result: ResponseGenerator = yield call(
       Api.updateUser,
-      token, firstName, phoneNumber, consentPhoneNumberVisibility, email, latitude, longitude
+      token,
+      firstName,
+      phoneNumber,
+      consentPhoneNumberVisibility,
+      email,
+      latitude,
+      longitude,
     );
     yield put(
       Actions.updateUserSuccess({
@@ -72,7 +75,7 @@ function* updateUser(
       }),
     );
   } catch (error: any) {
-    if(error.response){
+    if (error.response) {
       yield put(Actions.setAlert(error.response.data.message, 'error'));
       yield put(Actions.updateUserFailed({ message: error.response.data.message }));
     } else {
@@ -94,11 +97,11 @@ function* getUserAvatar(payload: getUserAvatarParams) {
     );
     yield put(Actions.getUserAvatarSuccess(result.data.avatarURL));
   } catch (error: any) {
-    if(error.response){
+    if (error.response) {
       yield put(Actions.setAlert(error.response.data.message, 'error'));
       yield put(Actions.getUserAvatarFailed({ message: error.response.data.message }));
     } else {
-      yield put(Actions.setAlert('Something went wrong','errror'));
+      yield put(Actions.setAlert('Something went wrong', 'errror'));
     }
   }
 }
@@ -114,15 +117,15 @@ function* getNearbyUsers(payload: getNearbyUsersParams) {
     const result: ResponseGenerator = yield call(Api.getNearbyUsers, latitude, longitude);
     yield put(
       Actions.getNearbyUsersSuccess({
-        nearbyUsers: result.data.users
+        nearbyUsers: result.data.users,
       }),
     );
   } catch (error: any) {
-    if(error.response){
+    if (error.response) {
       yield put(Actions.setAlert(error.response.data.message, 'error'));
       yield put(Actions.getNearbyUserFailed({ message: error.response.data.message }));
     } else {
-      yield put(Actions.setAlert('Something went wrong','errror'));
+      yield put(Actions.setAlert('Something went wrong', 'errror'));
     }
   }
 }
@@ -132,10 +135,10 @@ function* watchGetNearbyUsersRequest() {
 }
 
 const userSagas = [
-    fork(watchGetUserRequest),
-    fork(watchGetUserAvatarRequest),
-    fork(watchUpdateUserRequest),
-    fork(watchGetNearbyUsersRequest)
-  ];
-  
-  export default userSagas;
+  fork(watchGetUserRequest),
+  fork(watchGetUserAvatarRequest),
+  fork(watchUpdateUserRequest),
+  fork(watchGetNearbyUsersRequest),
+];
+
+export default userSagas;

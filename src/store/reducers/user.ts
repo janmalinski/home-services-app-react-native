@@ -8,22 +8,22 @@ interface User {
   phoneNumberConsent: boolean;
   avatarURL: string;
   ads: [
-    { 
+    {
       id: string;
       name: string;
-    }
-  ], 
+    },
+  ];
   roles: [
-    { 
+    {
       id: string;
       name: string;
-    }
-  ]
+    },
+  ];
 }
 
 export interface UserState {
   user: User;
-  nearbyUsers: User[],
+  nearbyUsers: User[];
   isLoading: boolean;
   error: string;
 }
@@ -37,17 +37,17 @@ const INITIAL_STATE: UserState = {
     phoneNumberConsent: false,
     avatarURL: '',
     ads: [
-      { 
+      {
         id: '',
-        name: ''
-      }
-    ], 
+        name: '',
+      },
+    ],
     roles: [
-      { 
+      {
         id: '',
-        name: ''
-      }
-    ]
+        name: '',
+      },
+    ],
   },
   nearbyUsers: [],
   isLoading: false,

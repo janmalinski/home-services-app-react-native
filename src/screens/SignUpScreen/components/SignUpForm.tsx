@@ -8,7 +8,7 @@ import { palette } from 'app/config/styles';
 import { i18n } from 'app/config/translations';
 import * as Types from 'app/types';
 
-export interface SignUpFormData extends Types.SignUpPayload{}
+export interface SignUpFormData extends Types.SignUpPayload {}
 
 export interface Props {
   initialValues: SignUpFormData;
@@ -18,7 +18,9 @@ export interface Props {
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().email(i18n.t('validation:email')).required(i18n.t('validation:required')),
-  password: Yup.string().min(6, i18n.t('validation:passwordLength')).required(i18n.t('validation:required')),
+  password: Yup.string()
+    .min(6, i18n.t('validation:passwordLength'))
+    .required(i18n.t('validation:required')),
   termsAccepted: Yup.boolean().oneOf([true], i18n.t('validation:acceptRequired')),
 });
 
@@ -69,7 +71,9 @@ export const SignUpForm: React.FC<Props> = ({ initialValues, loading, onSubmit }
               <Text>
                 {i18n.t('signUp:accept')}
                 <Text onPress={navigateToTermsOfUse}>
-                  <StyledText style={errors.termsAccepted && touched.termsAccepted ? styles.error : styles.link}>
+                  <StyledText
+                    style={errors.termsAccepted && touched.termsAccepted ? styles.error : styles.link}
+                  >
                     {i18n.t('signUp:termsOfUse')}
                   </StyledText>
                 </Text>
@@ -105,6 +109,6 @@ const styles = StyleSheet.create({
     color: palette.primary,
   },
   error: {
-    color: palette.error
-  }
+    color: palette.error,
+  },
 });

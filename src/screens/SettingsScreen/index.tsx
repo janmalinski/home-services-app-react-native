@@ -17,7 +17,7 @@ export const SettingsScreen: React.FC<Props> = ({ navigation }) => {
   const dispatch = useDispatch();
   const user = useSelector(selectors.getUser);
   const token = useSelector(selectors.isLoggedIn);
-  
+
   const openSignOutDialog = useCallback(() => {
     navigation.navigate(Types.Route.SingOutDialog);
   }, []);

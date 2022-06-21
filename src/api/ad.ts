@@ -13,7 +13,7 @@ export const createAd = (
   workingTime: Types.WorkingTime[],
   address: string,
   latitude: number,
-  longitude: number
+  longitude: number,
 ) => {
   const body = {
     description,
@@ -26,7 +26,7 @@ export const createAd = (
     workingTime,
     address,
     latitude,
-    longitude
+    longitude,
   };
 
   return API.post('/ad/create', body, {

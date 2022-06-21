@@ -13,7 +13,7 @@ interface ResponseGenerator {
   statusText?: string;
 }
 
-type getServicesParams = { payload: { token: string }; type: string }
+type getServicesParams = { payload: { token: string }; type: string };
 
 function* getServices(payload: getServicesParams) {
   try {
@@ -25,7 +25,7 @@ function* getServices(payload: getServicesParams) {
       }),
     );
   } catch (error: any) {
-    if(error.response){
+    if (error.response) {
       yield put(Actions.setAlert(error.response.data.message, 'error'));
       yield put(Actions.getServicesFailed({ message: error.response.data.message }));
     } else {

@@ -9,7 +9,7 @@ export interface AlertState {
 
 const INITIAL_STATE: AlertState = {
   message: '',
-  status: ''
+  status: '',
 };
 
 export default function alert(state = INITIAL_STATE, action: SetAlertAction) {
@@ -17,7 +17,7 @@ export default function alert(state = INITIAL_STATE, action: SetAlertAction) {
     case Types.ALERT.SET_ALERT: {
       return {
         message: action.payload.message,
-        status: action.payload.status
+        status: action.payload.status,
       };
     }
 

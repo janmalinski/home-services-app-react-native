@@ -46,14 +46,11 @@ export const updateUser = (
   });
 };
 
-export const getNearbyUsers = (
-  latitude: number,
-  longitude: number,
-) => {
+export const getNearbyUsers = (latitude: number, longitude: number) => {
   const body = {
     latitude,
     longitude,
   };
-  
-  return API.post('user/get-nearby-users',body);
+
+  return API.post('user/get-nearby-users', body);
 };

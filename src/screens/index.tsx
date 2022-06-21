@@ -11,4 +11,3 @@ export { AdCreateScreen } from './AdCreateScreen';
 export { SettingsScreen } from './SettingsScreen';
 export { AccountScreen } from './AccountScreen';
 export { SignOutDialogScreen } from './SignOutDialogScreen';
-

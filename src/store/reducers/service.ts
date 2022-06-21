@@ -1,4 +1,5 @@
 import * as Types from 'app/types';
+
 export interface ServiceState {
   data: Types.Service[];
   isLoading: boolean;

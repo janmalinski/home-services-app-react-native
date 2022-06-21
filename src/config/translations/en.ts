@@ -17,7 +17,7 @@ const translations = {
     save: 'Save',
   },
   adCreate: {
-    createAd: "Create Ad",
+    createAd: 'Create Ad',
     unableOpenSettings: 'Unable to open settings',
     locationDisabled: `Turn on Location Services to allow "${appConfig.displayName}" to determine your location. This is required to add your ad to listing`,
     locationPermissionDenied: 'Location permission denied',
@@ -43,10 +43,9 @@ const translations = {
       sunday: 'Su',
     },
     overnight: 'Night',
-    location: "Location",
-    detectLocation: "Detect my location",
-    setLocationManually:''
-
+    location: 'Location',
+    detectLocation: 'Detect my location',
+    setLocationManually: '',
   },
   validation: {
     email: 'Must be a valid email',
@@ -55,25 +54,24 @@ const translations = {
     phoneNumber: 'Phone number is not valid',
     phoneNumberMinLength: `Phone number must contain 9 digits`,
     passwordLength: 'Password is too short',
-    registrationCodeLength: "Wrong registration code length",
+    registrationCodeLength: 'Wrong registration code length',
     acceptRequired: 'You need to accept our Terms of Use',
   },
-  location:{
-    howCanWeHelpYou: "How can we help you?",
-    location: "Location",
-    clientOrWorker: "Are you looking for Home Help, or you are Home Help?",
+  location: {
+    howCanWeHelpYou: 'How can we help you?',
+    location: 'Location',
+    clientOrWorker: 'Are you looking for Home Help, or you are Home Help?',
     client: 'I am looking for Home Help',
     worker: 'I am Home Help',
     clientEmploymentType: 'I am looking for home help',
     workerEmploymentType: 'I am looking for client',
     yourLocation: 'Your location',
     detectLocation: 'Detect my location or set location manually',
-
   },
   map: {
-    searchOrMoveTheMap:'Search or move the map',
+    searchOrMoveTheMap: 'Search or move the map',
     whereAreYouLookingForHelp: 'Where are you looking for home help?',
-    whichAreYouWantToWork: 'Which area you want to work?'
+    whichAreYouWantToWork: 'Which area you want to work?',
   },
   signIn: {
     signIn: 'Log In',
@@ -88,9 +86,9 @@ const translations = {
     termsOfUse: 'Terms of Use',
   },
   registrationCodeSignUp: {
-    registrationCodeVerification: "Registration code verification",
-    registrationCode: "Registration code",
-    registrationCodeButton: "Submit registration code"
+    registrationCodeVerification: 'Registration code verification',
+    registrationCode: 'Registration code',
+    registrationCodeButton: 'Submit registration code',
   },
   resetPassword: {
     resetPassword: 'Reset password',

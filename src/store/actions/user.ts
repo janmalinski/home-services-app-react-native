@@ -83,7 +83,14 @@ export const updateUserFailed = ({ message }: { message: string }) => {
 
 export const updateUserRequest = (
   token: string,
-  { firstName, phoneNumber, consentPhoneNumberVisibility, email, latitude, longitude }: Types.UpdateUserPayload,
+  {
+    firstName,
+    phoneNumber,
+    consentPhoneNumberVisibility,
+    email,
+    latitude,
+    longitude,
+  }: Types.UpdateUserPayload,
 ) => {
   return {
     type: Types.USER.UPDATE_USER_REQUEST,
@@ -94,11 +101,10 @@ export const updateUserRequest = (
       consentPhoneNumberVisibility,
       email,
       latitude,
-      longitude
-    }
+      longitude,
+    },
   };
 };
-
 
 export const getNearbyUsersRequest = (token: string) => {
   return {
@@ -127,4 +133,3 @@ export const getNearbyUserFailed = ({ message }: { message: string }) => {
     },
   };
 };
-

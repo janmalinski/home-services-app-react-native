@@ -1,4 +1,5 @@
 import * as Types from 'app/types';
+
 export interface TypeemploymentState {
   data: Types.Typeemployment[];
   isLoading: boolean;

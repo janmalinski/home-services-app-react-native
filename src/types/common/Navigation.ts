@@ -37,7 +37,9 @@ export type MainTabParams = {
   [Route.Settings]: NoParams;
 };
 
-interface SignUpScreenParams extends Pick<MapScreenParams, 'userType'>, Pick<Coordinates, 'latitude' | 'longitude'> {};
+interface SignUpScreenParams
+  extends Pick<MapScreenParams, 'userType'>,
+    Pick<Coordinates, 'latitude' | 'longitude'> {}
 
 interface MapScreenParams {
   redirectAfterSubmit: string;
@@ -52,9 +54,9 @@ export type RootStackParams = {
   [Route.MainTab]: NavigatorScreenParams<MainTabParams>;
   [Route.ResetPassword]: NoParams;
   [Route.Location]: NoParams;
-  [Route.Map]: MapScreenParams,
+  [Route.Map]: MapScreenParams;
   [Route.AdCreate]: AdCreateParams;
-  [Route.AdCreateMap]: MapScreenParams,
+  [Route.AdCreateMap]: MapScreenParams;
   [Route.SignIn]: NoParams;
   [Route.SignUp]: SignUpScreenParams;
   [Route.RegistrationCodeSignUp]: NoParams;

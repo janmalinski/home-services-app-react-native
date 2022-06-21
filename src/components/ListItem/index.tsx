@@ -41,12 +41,13 @@ export const ListItem: React.FC<ListItemProps> = ({
   const variant = raised ? 'raised' : 'default';
   return (
     <ElementsListItem
-    {...props}
-    hasTVPreferredFocus={undefined}
-    tvParallaxProperties={undefined}
-    style={[styles.root, style]}
-    containerStyle={[styles.containerStyle, border ? styles.border : styles.line, containerStyle]}
-    pad={12}    >
+      {...props}
+      hasTVPreferredFocus={undefined}
+      tvParallaxProperties={undefined}
+      style={[styles.root, style]}
+      containerStyle={[styles.containerStyle, border ? styles.border : styles.line, containerStyle]}
+      pad={12}
+    >
       {leftComponent === 'avatar' && avatarUri && (
         <Avatar rounded source={{ uri: avatarUri }} avatarStyle={styles.avatar} />
       )}

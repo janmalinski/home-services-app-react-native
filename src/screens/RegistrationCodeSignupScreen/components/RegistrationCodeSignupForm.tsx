@@ -24,7 +24,6 @@ const validationSchema = Yup.object().shape({
 });
 
 export const RegistrationCodeSignUpForm = ({ initialValues, loading, onSubmit }: Props) => {
-
   const renderForm = useCallback(
     (props: FormikProps<RegistrationCodeSignUpFormData>) => {
       const { handleChange, handleBlur, values, handleSubmit, errors, setFieldValue, touched } = props;
@@ -42,7 +41,7 @@ export const RegistrationCodeSignUpForm = ({ initialValues, loading, onSubmit }:
             onBlur={handleBlur('code')}
             autoCapitalize="none"
             blurOnSubmit
-            keyboardType='number-pad'
+            keyboardType="number-pad"
             autoCompleteType="off"
           />
           <Button
@@ -68,8 +67,5 @@ const styles = StyleSheet.create({
   button: {
     marginTop: 8,
     marginBottom: 20,
-  },
-  link: {
-    color: palette.primary,
   },
 });

@@ -35,32 +35,32 @@ export const FullScreenTemplate: React.FC<FullScreenTemplateProps> = ({
 
   return (
     <RootView style={styles.mainContainer} edges={['top']}>
-        {header}
-        <Container
-          bounces={false}
-          extraScrollHeight={Platform.select({ ios: 32, android: 0 })}
-          keyboardShouldPersistTaps={keyboardShouldPersistTaps}
-          contentContainerStyle={[
-            styles.contentContainer,
-            padded && styles.padded,
-            bottomNavigationPad && styles.bottomNavigationPad,
-            contentContainerStyle,
-          ]}
-          style={[
-            styles.container,
-            noScroll && styles.containerNoScroll,
-            noScroll && padded && styles.padded,
-            noScroll && bottomNavigationPad && styles.bottomNavigationPad,
-            noScroll && contentContainerStyle,
-          ]}
-        >
-          {isLoading && (
-            <View style={styles.loadingContainer}>
-              <LoadingIndicator />
-            </View>
-          )}
-          {!isLoading && children}
-        </Container>
+      {header}
+      <Container
+        bounces={false}
+        extraScrollHeight={Platform.select({ ios: 32, android: 0 })}
+        keyboardShouldPersistTaps={keyboardShouldPersistTaps}
+        contentContainerStyle={[
+          styles.contentContainer,
+          padded && styles.padded,
+          bottomNavigationPad && styles.bottomNavigationPad,
+          contentContainerStyle,
+        ]}
+        style={[
+          styles.container,
+          noScroll && styles.containerNoScroll,
+          noScroll && padded && styles.padded,
+          noScroll && bottomNavigationPad && styles.bottomNavigationPad,
+          noScroll && contentContainerStyle,
+        ]}
+      >
+        {isLoading && (
+          <View style={styles.loadingContainer}>
+            <LoadingIndicator />
+          </View>
+        )}
+        {!isLoading && children}
+      </Container>
     </RootView>
   );
 };
@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
     flexGrow: 1,
   },
   padded: {
-    padding: spacing.large
+    padding: spacing.large,
   },
   bottomNavigationPad: {
     paddingBottom: 0,

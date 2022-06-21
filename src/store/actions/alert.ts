@@ -1,11 +1,11 @@
 import * as Types from 'app/types';
 
-export const setAlert = ( message: string, status: string) => {
+export const setAlert = (message: string, status: string) => {
   return {
     type: Types.ALERT.SET_ALERT,
     payload: {
       message,
-      status
+      status,
     },
   };
 };
@@ -13,7 +13,7 @@ export const setAlert = ( message: string, status: string) => {
 export const removeAlert = () => {
   return {
     type: Types.ALERT.REMOVE_ALERT,
-  }
-}
+  };
+};
 
 export type SetAlertAction = ReturnType<typeof setAlert>;

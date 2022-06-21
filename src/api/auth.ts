@@ -1,7 +1,15 @@
 import { API } from 'app/config/api';
 import * as Types from 'app/types';
 
-export const signUp = ({ email, password, termsAccepted, latitude, longitude, userType, language }: Types.SignUpPayload) => {
+export const signUp = ({
+  email,
+  password,
+  termsAccepted,
+  latitude,
+  longitude,
+  userType,
+  language,
+}: Types.SignUpPayload) => {
   return API.post('/auth/signUp', {
     email,
     password,
@@ -9,15 +17,15 @@ export const signUp = ({ email, password, termsAccepted, latitude, longitude, us
     latitude,
     longitude,
     userType,
-    language
+    language,
   });
 };
 
-export const verify = ({ code }: { code: string}) => {
+export const verify = ({ code }: { code: string }) => {
   return API.post('/auth/verify', {
-    code
+    code,
   });
-} 
+};
 
 export const signIn = ({ email, password }: Types.SignInPayload) => {
   return API.post('/auth/signIn', {

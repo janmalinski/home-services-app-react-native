@@ -1,5 +1,6 @@
-import * as Types from 'app/types';
 import { string } from 'yup';
+
+import * as Types from 'app/types';
 
 export const createAdRequest = (
   token: string,
@@ -11,7 +12,7 @@ export const createAdRequest = (
   dateAvailableTo: Date,
   workingTimeNegotiable: boolean,
   workingTime: Types.WorkingTime[],
-  address: number,
+  address: string,
   latitude: number,
   longitude: number,
 ) => ({
@@ -27,7 +28,7 @@ export const createAdRequest = (
   workingTime,
   address,
   latitude,
-  longitude
+  longitude,
 });
 
 export const setLoadingCreateAd = () => ({

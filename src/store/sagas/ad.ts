@@ -22,13 +22,26 @@ function* createAd(payload: {
   fixedTerm: boolean;
   dateAvailableTo: Date;
   workingTimeNegotiable: boolean;
-  workingTime: Types.WorkingTime[],
-  address: string,
-  latitude: number,
-  longitude: number,
+  workingTime: Types.WorkingTime[];
+  address: string;
+  latitude: number;
+  longitude: number;
 }) {
-  const { token, description, serviceIds, employmentTypeIds, dateAvailableFrom, fixedTerm, dateAvailableTo,  workingTimeNegotiable, workingTime, address, latitude, longitude } = payload;
-  try { 
+  const {
+    token,
+    description,
+    serviceIds,
+    employmentTypeIds,
+    dateAvailableFrom,
+    fixedTerm,
+    dateAvailableTo,
+    workingTimeNegotiable,
+    workingTime,
+    address,
+    latitude,
+    longitude,
+  } = payload;
+  try {
     yield put(Actions.setLoadingCreateAd());
     const result: ResponseGenerator = yield call(
       Api.createAd,
@@ -43,13 +56,13 @@ function* createAd(payload: {
       workingTime,
       address,
       latitude,
-      longitude
+      longitude,
     );
     yield put(Actions.createAdSuccess(result.data.message, result.data.add));
     yield put(Actions.setAlert(result.data.message, 'success'));
   } catch (error: any) {
-    if(error.response){
-      yield put(Actions.setAlert(error.response.data.message, 'error'))
+    if (error.response) {
+      yield put(Actions.setAlert(error.response.data.message, 'error'));
       yield put(Actions.createAdFailed({ message: error.response.data.message }));
     } else {
       yield put(Actions.setAlert('Something went wrong', 'error'));

@@ -1,6 +1,14 @@
 import * as Types from 'app/types';
 
-export const signUpRequest = ({ email, password, termsAccepted, latitude, longitude, userType, language }: Types.SignUpPayload) => {
+export const signUpRequest = ({
+  email,
+  password,
+  termsAccepted,
+  latitude,
+  longitude,
+  userType,
+  language,
+}: Types.SignUpPayload) => {
   return {
     type: Types.AUTH.SIGN_UP_REQUEST,
     payload: {
@@ -10,7 +18,7 @@ export const signUpRequest = ({ email, password, termsAccepted, latitude, longit
       latitude,
       longitude,
       userType,
-      language
+      language,
     },
   };
 };
@@ -32,14 +40,14 @@ export const setSignUpFailed = ({ message }: { message: string }) => {
   };
 };
 
-export const verifyRequest = ({ code }: { code: string}) => {
+export const verifyRequest = ({ code }: { code: string }) => {
   return {
     type: Types.AUTH.VERIFY_REQUEST,
     payload: {
-      code
-    }
-  }
-} 
+      code,
+    },
+  };
+};
 
 export const setLoadinVerify = () => ({
   type: Types.AUTH.VERIFY_PENDING,
@@ -65,8 +73,6 @@ export const setLoadingSignIn = () => ({
 export const setSignInSuccess = () => ({
   type: Types.AUTH.SIGN_IN_SUCCESS,
 });
-
-
 
 export const setSignInFailed = ({ message }: { message: string }) => {
   return {

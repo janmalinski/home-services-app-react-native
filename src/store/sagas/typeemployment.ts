@@ -23,13 +23,12 @@ function* getTypeemploymnets() {
       }),
     );
   } catch (error: any) {
-    if(error.response){
+    if (error.response) {
       yield put(Actions.setAlert(error.response.data.message, 'error'));
       yield put(Actions.getTypeemploymentFailed({ message: error.response.data.message }));
     } else {
       yield put(Actions.setAlert('Something went wrong', 'error'));
     }
-  
   }
 }
 

@@ -104,6 +104,6 @@ const styles = StyleSheet.create({
   error: {
     ...typography.hints,
     color: palette.error,
-    marginTop: -10
+    marginTop: -10,
   },
 });

@@ -15,7 +15,7 @@ import {
   serviceReducer,
   adReducer,
   typeemploymentReducer,
-  roleReducer
+  roleReducer,
 } from './reducers';
 import rootSaga from './sagas';
 
@@ -32,7 +32,7 @@ const rootReducer = combineReducers({
   service: serviceReducer,
   ad: adReducer,
   typeemployment: typeemploymentReducer,
-  role: roleReducer
+  role: roleReducer,
 });
 
 // export default rootReducer;
