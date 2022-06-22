@@ -5,8 +5,8 @@ import * as Yup from 'yup';
 
 import { Button, TextInput } from 'app/components';
 import { MIN_PASSWORD_LENGTH } from 'app/config/api';
-import { i18n } from 'app/config/translations';
 import { spacing } from 'app/config/styles';
+import { i18n } from 'app/config/translations';
 
 export interface SignInFormData {
   email: string;
