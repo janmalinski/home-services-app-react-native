@@ -13,7 +13,7 @@ const INITIAL_STATE: AuthState = {
   isLoading: false,
   error: '',
 };
-
+//THIS PART WILL BE FINISHED - ADD TYPES OF ACTION
 export default function auth(state = INITIAL_STATE, action: any) {
   switch (action.type) {
     case Types.AUTH.SIGN_UP_PENDING: {

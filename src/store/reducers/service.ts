@@ -11,7 +11,7 @@ const INITIAL_STATE: ServiceState = {
   isLoading: false,
   error: '',
 };
-
+//THIS PART WILL BE FINISHED - ADD TYPES OF ACTION
 export default function service(state = INITIAL_STATE, action: any) {
   switch (action.type) {
     case Types.SERVICE.GET_SERVICES_PENDING: {

@@ -12,6 +12,7 @@ const INITIAL_STATE: TypeemploymentState = {
   error: '',
 };
 
+// THIS PART WILL BE FINISHED - ADD TYPES OF ACTION
 export default function typeemployment(state = INITIAL_STATE, action: any) {
   switch (action.type) {
     case Types.TYPEEMPLOYMENT.GET_TYPEEMPLOYMENT_PENDING: {

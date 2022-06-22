@@ -19,7 +19,7 @@ const INITIAL_STATE: AdState = {
   error: '',
   message: '',
 };
-
+// THIS PART WILL BE FINISHED - ADD TYPES OF ACTION
 export default function user(state = INITIAL_STATE, action: any) {
   switch (action.type) {
     case Types.AD.CREATE_AD_PENDING: {

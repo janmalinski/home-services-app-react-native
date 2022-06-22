@@ -11,7 +11,7 @@ const INITIAL_STATE: RoleState = {
   isLoading: false,
   error: '',
 };
-
+// THIS PART WILL BE FINISHED - ADD TYPES OF ACTION
 export default function role(state = INITIAL_STATE, action: any) {
   switch (action.type) {
     case Types.ROLE.GET_ROLE_PENDING: {

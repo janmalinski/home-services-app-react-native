@@ -53,7 +53,7 @@ const INITIAL_STATE: UserState = {
   isLoading: false,
   error: '',
 };
-
+// THIS PART WILL BE FINISHED - ADD TYPES OF ACTION
 export default function user(state = INITIAL_STATE, action: any) {
   switch (action.type) {
     case Types.USER.GET_USER_PENDING: {
