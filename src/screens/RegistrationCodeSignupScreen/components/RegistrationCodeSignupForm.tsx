@@ -4,7 +4,6 @@ import { StyleSheet, View } from 'react-native';
 import * as Yup from 'yup';
 
 import { Button, TextInput } from 'app/components';
-import { palette } from 'app/config/styles';
 import { i18n } from 'app/config/translations';
 
 export interface RegistrationCodeSignUpFormData {

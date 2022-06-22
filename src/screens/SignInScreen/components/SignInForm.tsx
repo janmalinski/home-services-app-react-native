@@ -6,6 +6,7 @@ import * as Yup from 'yup';
 import { Button, TextInput } from 'app/components';
 import { MIN_PASSWORD_LENGTH } from 'app/config/api';
 import { i18n } from 'app/config/translations';
+import { spacing } from 'app/config/styles';
 
 export interface SignInFormData {
   email: string;
@@ -81,7 +82,7 @@ export const SignInForm: React.FC<Props> = ({ initialValues, onSubmit, loading }
 
 const styles = StyleSheet.create({
   button: {
-    marginTop: 8,
-    marginBottom: 20,
+    marginTop: spacing.small,
+    marginBottom: spacing.xLarge,
   },
 });

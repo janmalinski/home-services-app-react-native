@@ -3,7 +3,7 @@ import { StyleSheet, View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { FullScreenTemplate, ListItem, WavyHeader } from 'app/components';
-import { palette } from 'app/config/styles';
+import { palette, spacing } from 'app/config/styles';
 import { i18n } from 'app/config/translations';
 import { useScreenOptions } from 'app/lib/navigation';
 import { actions, selectors } from 'app/store';
@@ -70,6 +70,6 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     height: 200,
-    marginHorizontal: -16,
+    marginHorizontal: -spacing.large,
   },
 });

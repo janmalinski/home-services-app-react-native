@@ -5,7 +5,7 @@ import ImagePicker, { Options } from 'react-native-image-crop-picker';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { Icon } from 'app/components';
-import { palette } from 'app/config/styles';
+import { palette, spacing } from 'app/config/styles';
 import { selectors } from 'app/store';
 import { uploadUserAvatarRequest } from 'app/store/actions';
 
@@ -67,8 +67,8 @@ export const UserProfilePicturePicker: React.FC<Props> = ({ initialImageURL }) =
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 12,
-    paddingBottom: 20,
+    marginTop: spacing.regular,
+    paddingBottom: spacing.xLarge,
     alignItems: 'center',
   },
   iconContainer: {

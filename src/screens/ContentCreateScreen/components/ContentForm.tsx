@@ -1,6 +1,9 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
+{
+  /* THIS FORM WILL BE REFACTORED IN THE FUTURE */
+}
 const ContentForm = () => {
   return (
     <View>

@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import * as Yup from 'yup';
 
 import { Button, Checkbox, TextInput, StyledText } from 'app/components';
-import { palette } from 'app/config/styles';
+import { palette, spacing } from 'app/config/styles';
 import { i18n } from 'app/config/translations';
 import * as Types from 'app/types';
 
@@ -102,8 +102,8 @@ export const SignUpForm: React.FC<Props> = ({ initialValues, loading, onSubmit }
 
 const styles = StyleSheet.create({
   button: {
-    marginTop: 8,
-    marginBottom: 20,
+    marginTop: spacing.small,
+    marginBottom: spacing.xLarge,
   },
   link: {
     color: palette.primary,

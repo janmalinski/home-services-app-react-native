@@ -3,7 +3,7 @@ import { Image, StyleSheet, View, ImageBackground, TouchableOpacity } from 'reac
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { Button, StyledText } from 'app/components';
-import { typography, palette } from 'app/config/styles';
+import { typography, palette, spacing } from 'app/config/styles';
 import * as Types from 'app/types';
 
 type Props = Types.RootStackScreenProps<Types.Route.Welcome>;
@@ -61,14 +61,14 @@ const styles = StyleSheet.create({
     color: palette.grayscale00,
   },
   headerInner: {
-    paddingTop: 20,
+    paddingTop: spacing.xLarge,
     alignItems: 'center',
   },
   brand: {
     width: 156,
     height: 30,
     resizeMode: 'contain',
-    marginBottom: 16,
+    marginBottom: spacing.large,
   },
   title: {
     ...typography.header2,
@@ -77,12 +77,12 @@ const styles = StyleSheet.create({
   },
   paragraph: {
     ...typography.subtitle1,
-    lineHeight: 16,
+    lineHeight: spacing.large,
     color: palette.grayscale00,
   },
   container: {
     flex: 1,
-    paddingHorizontal: 16,
+    paddingHorizontal: spacing.large,
     alignItems: 'center',
   },
   subContainer: {

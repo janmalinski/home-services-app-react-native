@@ -1,5 +1,3 @@
-import { string } from 'yup';
-
 import * as Types from 'app/types';
 
 export const createAdRequest = (

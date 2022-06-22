@@ -2,7 +2,6 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
 import { Checkbox, StyledText } from 'app/components';
-import { spacing } from 'app/config/styles';
 import { i18n } from 'app/config/translations';
 
 import { AdFormData, workingTimeRecord } from './AdForm';
